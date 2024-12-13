@@ -24,7 +24,9 @@ def run_project_cost_calculator():
     # Display inputs in table-like format using a loop
     st.subheader("Enter Costs (₹/Ton)")
     for cost in cost_inputs:
-        st.session_state.calculator_data[cost] = st.number_input(f"{cost}", min_value=0.0, format="%.2f", value=st.session_state.calculator_data[cost])
+        st.session_state.calculator_data[cost] = st.number_input(
+            f"{cost}", min_value=0.0, format="%.2f", value=st.session_state.calculator_data[cost]
+        )
 
     # Custom Cost Input
     st.subheader("Add Custom Cost Component")
@@ -40,6 +42,7 @@ def run_project_cost_calculator():
 
     # Quantity Input
     total_quantity = st.number_input("Enter Total Material Quantity (Tons)", min_value=0.0, format="%.2f")
+    st.session_state.total_quantity = total_quantity  # Save total quantity to session state
 
     # Calculate Total Cost
     if st.button("Calculate Total Project Cost"):
